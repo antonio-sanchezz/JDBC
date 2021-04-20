@@ -24,7 +24,7 @@ Bot&oacute;n derecho sobre el proyecto > Gradle > Refresh Gradle Project.
 ### Crear el contenedor
 
 Situarse en el directorio de proyecto y ejecutar el siguiente comando  
-$>`docker-compose-up`
+$>`docker-compose up`
 
 
 #### CREAR UNA BD BÁSICA CON UNA TABLA
