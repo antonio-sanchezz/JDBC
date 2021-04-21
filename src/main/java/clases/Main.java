@@ -13,21 +13,39 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Hola Mundo");
-		
-		Connection conexion;
-		
+
+		Connection conexion = null;
+
 		String url = "jdbc:mysql://localhost:6033/biblioteca";
-		
+
 		try {
 			conexion = DriverManager.getConnection(url, "developer", "programaciondaw");
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		}
+
+		try {
+			String sql = "SELECT * FROM libro";
+			Statement sentencia = conexion.createStatement();
+			ResultSet rs = sentencia.executeQuery(sql);
+			while (rs.next()) {
+				String isbn = rs.getString("isbn");
+				String titulo = rs.getString("titulo");
+				String genero = rs.getString("genero");
+				String autor = rs.getString("autor");
+				int paginas = rs.getInt("paginas");
+				System.out.println("ISBN: " + isbn + " Titulo: " + titulo + " Genero: " + genero + " Autor: " + autor + " Paginas: " + paginas);
+			}
+			conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
