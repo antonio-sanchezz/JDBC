@@ -19,7 +19,9 @@ public class Main {
 		String url = "jdbc:mysql://localhost:6033/biblioteca";
 
 		try {
+			// Realizamos la conexion con la base de datos.
 			conexion = DriverManager.getConnection(url, "developer", "programaciondaw");
+			// Cargamos el driver.
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 		} catch (ClassNotFoundException e) {
@@ -31,8 +33,14 @@ public class Main {
 		}
 
 		try {
-			String sql = "SELECT * FROM libro";
 			Statement sentencia = conexion.createStatement();
+			// Insertamos un nuevo libro.
+//			String sqlinsert = "INSERT INTO libro (isbn, titulo, genero, autor, paginas) VALUES ('234234324', 'pepe', 'NOVELA', 'Roberto', 33)";
+//			sentencia.execute(sqlinsert);
+
+			// Mostramos todos los datos de la tabla libro.
+			String sql = "SELECT * FROM libro";
+
 			ResultSet rs = sentencia.executeQuery(sql);
 			while (rs.next()) {
 				String isbn = rs.getString("isbn");
@@ -40,7 +48,8 @@ public class Main {
 				String genero = rs.getString("genero");
 				String autor = rs.getString("autor");
 				int paginas = rs.getInt("paginas");
-				System.out.println("ISBN: " + isbn + " Titulo: " + titulo + " Genero: " + genero + " Autor: " + autor + " Paginas: " + paginas);
+				System.out.println("ISBN: " + isbn + " Titulo: " + titulo + " Genero: " + genero + " Autor: " + autor
+						+ " Paginas: " + paginas);
 			}
 			conexion.close();
 		} catch (SQLException e) {
