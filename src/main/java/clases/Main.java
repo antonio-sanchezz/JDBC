@@ -37,9 +37,18 @@ public class Main {
 			// Insertamos un nuevo libro.
 //			String sqlinsert = "INSERT INTO libro (isbn, titulo, genero, autor, paginas) VALUES ('234234324', 'pepe', 'NOVELA', 'Roberto', 33)";
 //			sentencia.execute(sqlinsert);
+			
+			// Borramos un libro.
+//			String sqldel = "DELETE FROM libro WHERE isbn = '234234324'";
+//			sentencia.execute(sqldel);
+			
+			// Actualizamos un libro.
+//			String sqlupdate = "UPDATE libro SET titulo = 'Una nueva vida'";
+//			sentencia.executeUpdate(sqlupdate);
 
 			// Mostramos todos los datos de la tabla libro.
 			String sql = "SELECT * FROM libro";
+			sentencia.execute(sql);
 
 			ResultSet rs = sentencia.executeQuery(sql);
 			while (rs.next()) {
